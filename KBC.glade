@@ -2,18 +2,152 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkWindow" id="AUDIENCE_V">
+    <property name="can_focus">False</property>
+    <property name="type">popup</property>
+    <property name="type_hint">splashscreen</property>
+    <property name="gravity">north-east</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkProgressBar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="pulse_step">0.01</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">KBC_MAIN_2.jpg</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkImage" id="Gamepoint">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-about</property>
   </object>
-  <object class="GtkWindow" id="KBC_intro">
+  <object class="GtkWindow" id="INSTRUCTIONS">
+    <property name="can_focus">False</property>
+    <property name="type">popup</property>
+    <property name="type_hint">dialog</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkFrame" id="Frame">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkAlignment">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">-Use the top left Game Options to choose if you want to do the following:   
+
+			*EXIT prematurely and end the game.
+			*WITHDRAW game with the earned money.
+
+-Use the top right About, to know more about:
+			* The developers 
+			*Copyright details
+			* Version details.... etc.
+
+-No pre-requisites,  only G.K.
+
+-Rules are the same as original Kaun Banega Crorepati:
+		*Earn money by choosing correct answer.
+		*Only single option correct.
+		*Give wrong answer and you Exit game with money[ If quaified] 
+		   earned in previous checkpoint.
+		*Go to "Game Options--&gt;Withdraw" to exit game
+		   with the earned money, if no wrong answers are given before.
+		*Beat the game to earn Rs.1 Cr.
+
+						ALL THE BEST
+		</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Instructions</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="KBC_INTRO">
     <property name="name">Kaun Banega Crorepati ver_0.01</property>
     <property name="can_focus">False</property>
-    <property name="window_position">center</property>
+    <property name="window_position">center-always</property>
     <property name="default_width">440</property>
     <property name="default_height">0</property>
-    <property name="type_hint">desktop</property>
+    <property name="type_hint">splashscreen</property>
     <property name="gravity">center</property>
     <child>
       <placeholder/>
@@ -82,6 +216,199 @@
             <property name="position">2</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkLevelBar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="value">100.89</property>
+            <property name="max_value">100</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="NUMBER">
+    <property name="can_focus">False</property>
+    <property name="type">popup</property>
+    <property name="gravity">north-east</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Enter number of your friend</property>
+            <attributes>
+              <attribute name="font-desc" value="Laksaman Bold 14"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSearchBar" id="Bar">
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Enter number</property>
+            <property name="search_mode_enabled">True</property>
+            <property name="show_close_button">True</property>
+            <child>
+              <object class="GtkEntry" id="Number">
+                <property name="name">Number</property>
+                <property name="height_request">32</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="PHONE_F">
+    <property name="can_focus">False</property>
+    <property name="type">popup</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkSpinner">
+                <property name="width_request">30</property>
+                <property name="height_request">30</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Number</property>
+                <attributes>
+                  <attribute name="font-desc" value="Tlwg Typo Bold 11"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">TIME REMAINING:                           60s</property>
+                <attributes>
+                  <attribute name="font-desc" value="Laksaman Bold 11"/>
+                  <attribute name="weight" value="ultraheavy"/>
+                  <attribute name="gravity" value="south"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkProgressBar">
+                <property name="height_request">34</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="fraction">1</property>
+                <property name="pulse_step">0.0099999997764825821</property>
+                <property name="inverted">True</property>
+                <property name="show_text">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="pixbuf">CALL.png</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="height_request">66</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Conversation with friend...</property>
+            <attributes>
+              <attribute name="font-desc" value="Tlwg Mono Bold Oblique 12"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
       </object>
     </child>
   </object>
@@ -91,26 +418,29 @@
     <property name="icon_name">dialog-yes</property>
     <property name="icon_size">6</property>
   </object>
-  <object class="GtkAboutDialog">
+  <template class="ABOUT" parent="GtkAboutDialog">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
     <property name="window_position">mouse</property>
     <property name="type_hint">menu</property>
     <property name="gravity">center</property>
-    <property name="program_name">Glade</property>
-    <property name="copyright" translatable="yes">Group 4, D1 copyright 
-</property>
+    <property name="program_name">Kaun Banega Crorepati 2019</property>
+    <property name="version">Ver 0.1</property>
+    <property name="website_label" translatable="yes">- Arka Haldi
+-Jainam Jain
+-Prathamesh Bagekari
+-Sanchit Gajam</property>
     <property name="authors">- Arka Haldi
 -Jainam Jain
 -Prathamesh Bagekari
 -Sanchit Gajam</property>
-    <property name="logo_icon_name">image-missing</property>
+    <property name="translator_credits" translatable="yes">2018</property>
+    <property name="logo">KBC_ABOUT.jpg</property>
     <child>
       <placeholder/>
     </child>
     <child internal-child="vbox">
-      <object class="GtkBox" id="about">
-        <property name="name">about</property>
+      <object class="GtkBox">
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child internal-child="action_area">
@@ -120,8 +450,8 @@
             <child>
               <object class="GtkButton">
                 <property name="label" translatable="yes">OK</property>
-                <property name="width_request">380</property>
-                <property name="height_request">64</property>
+                <property name="width_request">400</property>
+                <property name="height_request">60</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -173,21 +503,56 @@ Group 4 D1
         </child>
       </object>
     </child>
-  </object>
+  </template>
   <object class="GtkWindow">
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
     <child>
       <placeholder/>
     </child>
     <child>
-      <placeholder/>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="pixbuf">KBC_MAIN_2.jpg</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSearchBar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">salutation</property>
+                <property name="label" translatable="yes">THANK YOU FOR JOINING US TODAY!
+	YOU HAVE WON Rs.XXX</property>
+                <attributes>
+                  <attribute name="font-desc" value="Laksaman Bold 20"/>
+                  <attribute name="weight" value="ultrabold"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
     </child>
   </object>
-  <object class="GtkAction" id="action1"/>
-  <object class="GtkAction" id="action2"/>
-  <object class="GtkAction" id="action3"/>
-  <object class="GtkAction" id="action4"/>
   <object class="GtkImage" id="checkpoint1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -232,11 +597,11 @@ and ask them for correct answer.</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-justify-fill</property>
   </object>
-  <template class="inactive10" parent="GtkImage">
+  <object class="GtkImage" id="inactive10">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-justify-fill</property>
-  </template>
+  </object>
   <object class="GtkImage" id="inactive11">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -246,6 +611,7 @@ and ask them for correct answer.</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-justify-fill</property>
+    <property name="icon_size">2</property>
   </object>
   <object class="GtkImage" id="inactive2">
     <property name="visible">True</property>
@@ -305,7 +671,7 @@ and ask them for correct answer.</property>
             <child>
               <object class="GtkMenuItem" id="G_OPTONS">
                 <property name="name">Game Options</property>
-                <property name="height_request">40</property>
+                <property name="height_request">30</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Game Options</property>
@@ -370,8 +736,7 @@ and ask them for correct answer.</property>
                   <object class="GtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="stock">gtk-add</property>
-                    <property name="icon_size">5</property>
+                    <property name="pixbuf">KBC_MAIN_3.jpg</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -380,12 +745,13 @@ and ask them for correct answer.</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="Info">
+                    <property name="height_request">33</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Info field</property>
                     <attributes>
-                      <attribute name="font-desc" value="Tlwg Typewriter Bold 12"/>
+                      <attribute name="font-desc" value="Tlwg Typewriter Bold 14"/>
                     </attributes>
                   </object>
                   <packing>
@@ -495,14 +861,14 @@ and ask them for correct answer.</property>
                 <child>
                   <object class="GtkGrid">
                     <property name="width_request">225</property>
-                    <property name="height_request">375</property>
+                    <property name="height_request">450</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="row_homogeneous">True</property>
                     <child>
                       <object class="GtkButton">
                         <property name="label" translatable="yes">15</property>
-                        <property name="width_request">50</property>
+                        <property name="width_request">47</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="focus_on_click">False</property>
@@ -714,13 +1080,14 @@ and ask them for correct answer.</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="width_request">234</property>
+                        <property name="height_request">11</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">1,00,00,000</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -739,7 +1106,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -758,7 +1125,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -777,7 +1144,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -796,7 +1163,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -815,7 +1182,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -834,7 +1201,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -853,7 +1220,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -872,7 +1239,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -891,7 +1258,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -910,7 +1277,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -929,7 +1296,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -948,7 +1315,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -967,7 +1334,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -986,7 +1353,7 @@ and ask them for correct answer.</property>
                         <property name="justify">center</property>
                         <property name="ellipsize">middle</property>
                         <attributes>
-                          <attribute name="font-desc" value="Laksaman Bold 12"/>
+                          <attribute name="font-desc" value="Laksaman Bold 11"/>
                           <attribute name="style" value="normal"/>
                           <attribute name="weight" value="ultrabold"/>
                         </attributes>
@@ -1020,23 +1387,20 @@ and ask them for correct answer.</property>
         <child>
           <object class="GtkAccelLabel">
             <property name="width_request">0</property>
-            <property name="height_request">100</property>
+            <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="tooltip_text" translatable="yes">question</property>
-            <property name="xpad">2</property>
-            <property name="ypad">2</property>
             <property name="label" translatable="yes">question</property>
-            <property name="xalign">0.029999999329447746</property>
+            <property name="xalign">0.0099999997764825821</property>
             <property name="yalign">0.5</property>
             <attributes>
-              <attribute name="font-desc" value="Laksaman Bold 19"/>
+              <attribute name="font-desc" value="Laksaman Bold 15"/>
             </attributes>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="padding">5</property>
             <property name="position">2</property>
           </packing>
         </child>
@@ -1044,18 +1408,20 @@ and ask them for correct answer.</property>
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="row_homogeneous">True</property>
+            <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkCheckButton">
                 <property name="label" translatable="yes">B: option1</property>
                 <property name="use_action_appearance">True</property>
-                <property name="related_action">action2</property>
-                <property name="width_request">500</property>
+                <property name="related_action"/>
+                <property name="width_request">-1</property>
                 <property name="height_request">-1</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
                 <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
-                <property name="border_width">10</property>
+                <property name="border_width">7</property>
                 <property name="action_name">CLICK</property>
                 <property name="xalign">0</property>
                 <property name="yalign">0.5</property>
@@ -1072,14 +1438,14 @@ and ask them for correct answer.</property>
               <object class="GtkCheckButton">
                 <property name="label" translatable="yes">C: option2</property>
                 <property name="use_action_appearance">True</property>
-                <property name="related_action">action3</property>
+                <property name="related_action"/>
                 <property name="width_request">-1</property>
-                <property name="height_request">75</property>
+                <property name="height_request">64</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
                 <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
-                <property name="border_width">10</property>
+                <property name="border_width">7</property>
                 <property name="action_name">CLICK</property>
                 <property name="xalign">0</property>
                 <property name="yalign">0.5</property>
@@ -1096,14 +1462,14 @@ and ask them for correct answer.</property>
               <object class="GtkCheckButton">
                 <property name="label" translatable="yes">D: option3</property>
                 <property name="use_action_appearance">True</property>
-                <property name="related_action">action4</property>
+                <property name="related_action"/>
                 <property name="width_request">-1</property>
                 <property name="height_request">-1</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
                 <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
-                <property name="border_width">10</property>
+                <property name="border_width">7</property>
                 <property name="action_name">CLICK</property>
                 <property name="xalign">0</property>
                 <property name="yalign">0.5</property>
@@ -1120,19 +1486,16 @@ and ask them for correct answer.</property>
               <object class="GtkCheckButton">
                 <property name="label" translatable="yes">A: option0</property>
                 <property name="use_action_appearance">True</property>
-                <property name="related_action">action1</property>
+                <property name="related_action"/>
                 <property name="name">OPTION 0</property>
-                <property name="width_request">500</property>
-                <property name="height_request">75</property>
+                <property name="height_request">64</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
                 <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
                 <property name="tooltip_text" translatable="yes">Option A </property>
-                <property name="border_width">10</property>
+                <property name="border_width">7</property>
                 <property name="action_name">CLICK</property>
-                <property name="xalign">0</property>
-                <property name="yalign">0.5</property>
                 <property name="draw_indicator">False</property>
                 <signal name="toggled" handler="OPTION(0);" swapped="no"/>
               </object>
