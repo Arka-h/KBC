@@ -77,7 +77,7 @@ void ERROR1()//Error if file_pointer doesn't find file.
 }
 void SOUND(char z)
 	// Note that this function can only work in some cases, its not general 
-	//It's Ubuntu specific, as it is direct command on terminal.[Idk if its Linux specific.
+	//It's Ubuntu specific, as it is direct command on terminal.[Idk if its Linux specific.]
 {   switch (z)
     {
     case 'E'/*Entry*/        :  system("canberra-gtk-play -f KBC_Entry.wav");break;
@@ -145,11 +145,12 @@ void SOUND(char z)
     	for (i=0;i<5;)
     	{   
             printf("\n%d)%s\n",i+6,medium.questions[M[i]].string);
-            if(i!=0)
-            {
-	     //delay(0.3); required after gtk addition
-	     SOUND('Q');
-	    }
+            if(i!=0)//To adjust the next question sound with the checkpoint sound.
+            	{
+	     	//delay(0.3); required after gtk addition
+	     	SOUND('Q');
+	    	}
+	    	else delay(1);
             for(int j=0;j<4;j++)
             {
                 delay(1);
@@ -193,6 +194,7 @@ void SOUND(char z)
 	     //delay(0.3); required after gtk addition
 	     SOUND('Q');
 	    }
+	    else delay(1);
             for(int j=0;j<4;j++)
             {
                 delay(1);
@@ -262,30 +264,22 @@ void SOUND(char z)
 
 	if(a==0)
 	{
-    	system("clear");
+    		system("clear");
 
 		printf("THANK YOU FOR JOINING US TODAY\n\nYOU HAVE WON Rs.0\n\n\n\n\n\n\npress any char to exit\n");
 		scanf(" %c",&aux);
 	}
 	else if(a==1)
 	{
-		printf("wrong answer");
-		system("canberra-gtk-play -f KBC_end.wav");
-		printf("\npress any char to continue\n");
-		scanf(" %c",&aux);
-
 		system("clear");
+		
 		printf("THANK YOU FOR JOINING US TODAY\n\nYOU HAVE WON Rs.10,000\n\n\n\n\n\n\npress any char to exit\n");
 		scanf(" %c",&aux);
 	}
 	else if(a==2)
 	{
-		printf("wrong answer");
-		system("canberra-gtk-play -f KBC_end.wav");
-		printf("\n press any char to continue \n");
-		scanf(" %c",&aux);
-
 		system("clear");
+		
 		printf("THANK YOU FOR JOINING US TODAY\n\nYOU HAVE WON Rs.3,20,000.\n\n\n\n\n\n\npress any char to exit\n");
 		scanf(" %c",&aux);
 	}
