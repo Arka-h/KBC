@@ -43,6 +43,24 @@ Q_paper0 hard;
 Q_paper1 medium;
 Q_paper0 easy;
 
+void RI(int*p,int n)
+	{
+		for(int i=0;i<n; i++)
+		*(p+i)=0;
+	}
+	
+void U_RANDOM(int* p,int n,int L)
+{	char a[L];
+    	int i=0;
+	RI (&a,L);
+ 	while(i<n);
+ 	{
+		*(p+i)= rand()%L;
+		
+		if(a[*(p+i)]==0)
+		a[*(p+(i++))]++;
+ 	}
+}
 
 void ERROR1()
 {
@@ -59,7 +77,7 @@ void ERROR1()
 	int response;
     if(r==0)
     {	int E[5];
-	U_RANDOM(&E,5,30);
+	    U_RANDOM(&E,5,30);
     	for (i=0;i<5;)	
     	{printf("\n%d)%s\n",i+1,easy.questions[E[i]].string);
 
@@ -137,23 +155,7 @@ void ERROR1()
     }
 
 }
-void RI(int*p,int n)
-	{
-		for(int i=0;i<n; i++)
-		*(p+i)=0;
-	}
-void U_RANDOM(int* p,int n,int L)
-{	char a[L];
-    	int i=0;
-	RI (&a,L);
- 	while(i<n);
- 	{
-		*(p+i)= rand()%L;
-		
-		if(a[*(p+i)]==0)
-		a[*(p+(i++))]++;
- 	}
-}
+
 
 
  int main()
