@@ -53,7 +53,7 @@ void U_RANDOM(int* p,int n,int L)
 {	char a[L];
     	int i=0;
 	RI (&a,L);
- 	while(i<n);
+ 	while(i<n)
  	{
 		*(p+i)= rand()%L;
 		
