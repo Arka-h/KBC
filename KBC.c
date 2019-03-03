@@ -99,13 +99,12 @@ void SOUND(char z)
     {   int E[5];
         U_RANDOM(E,5,30);//Random selection of the questions. 
     	for (i=0;i<5;)
-    	{   delay(1);
+    	{   
             printf("\n%d)%s\n",i+1,easy.questions[E[i]].string);
-            if(i!=4)
-	    {
+            
 	     //delay(0.3); required after gtk addition
 	     SOUND('Q');
-	    }
+	    
             for(int j=0;j<4;j++)
             {
                 delay(1);//so that options feel like they are sequencially printing
@@ -144,9 +143,9 @@ void SOUND(char z)
     {   int M[5];
         U_RANDOM(M,5,45);
     	for (i=0;i<5;)
-    	{   delay(1);
+    	{   
             printf("\n%d)%s\n",i+6,medium.questions[M[i]].string);
-            if(i!=4)
+            if(i!=0)
             {
 	     //delay(0.3); required after gtk addition
 	     SOUND('Q');
@@ -187,9 +186,9 @@ void SOUND(char z)
     {   int H[5];
         U_RANDOM(H,5,30);
     	for (i=0;i<5;)
-    	{   delay(1);
+    	{   
             printf("\n%d)%s\n",i+1,hard.questions[H[i]].string);
-            if(i!=4)
+            if(i!=0)
             {
 	     //delay(0.3); required after gtk addition
 	     SOUND('Q');
