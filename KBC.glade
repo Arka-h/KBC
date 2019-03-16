@@ -2,9 +2,10 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkWindow" id="AUDIENCE_V">
+  <object class="GtkWindow" id="AUDIENCE_VOTE">
     <property name="can_focus">False</property>
     <property name="type">popup</property>
+    <property name="title" translatable="yes">Audience Vote</property>
     <property name="type_hint">splashscreen</property>
     <property name="gravity">north-east</property>
     <child>
@@ -16,7 +17,7 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkProgressBar">
+          <object class="GtkProgressBar" id="Audience_Vote_Progress">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="pulse_step">0.01</property>
@@ -44,7 +45,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkImage">
+              <object class="GtkImage" id="Audience_Vote_Main_2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="pixbuf">KBC_MAIN_2.jpg</property>
@@ -142,8 +143,9 @@
     </child>
   </object>
   <object class="GtkWindow" id="KBC_INTRO">
-    <property name="name">Kaun Banega Crorepati ver_0.01</property>
+    <property name="name">KBC_INTRO</property>
     <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Kaun Banega Crorepati 2019_ver2.0</property>
     <property name="window_position">center-always</property>
     <property name="default_width">440</property>
     <property name="default_height">0</property>
@@ -158,25 +160,17 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkMenuBar">
+          <object class="GtkMenuBar" id="menu0">
             <property name="height_request">24</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkMenuItem" id="About">
-                <property name="width_request">70</property>
-                <property name="height_request">24</property>
+              <object class="GtkMenuItem" id="about">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="events">GDK_BUTTON_PRESS_MASK | GDK_STRUCTURE_MASK</property>
-                <property name="tooltip_text" translatable="yes">Know more about the developers</property>
-                <property name="right_justified">True</property>
-                <property name="label" translatable="yes">About</property>
+                <property name="label" translatable="yes">About_1</property>
                 <property name="use_underline">True</property>
-                <signal name="activate" handler="gtk_widget_show_now(about);" swapped="no"/>
-                <signal name="select" handler="gtk_widget_show_now(about);" swapped="no"/>
-                <signal name="toggle-size-request" handler="gtk_widget_show_now (about);" swapped="no"/>
-                <accelerator key="a" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                <signal name="select" handler="show_about" swapped="no"/>
               </object>
             </child>
           </object>
@@ -187,14 +181,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage" id="FORE_SCREEN 1">
-            <property name="name">Picture</property>
-            <property name="width_request">1366</property>
-            <property name="height_request">768</property>
+          <object class="GtkImage" id="image_fore1">
             <property name="visible">True</property>
+            <property name="sensitive">False</property>
             <property name="can_focus">False</property>
             <property name="events">GDK_KEY_PRESS_MASK | GDK_STRUCTURE_MASK</property>
-            <property name="pixbuf">KBC_FORE1.jpg</property>
+            <property name="pixbuf">KBC_FORE2.jpg</property>
             <signal name="key-press-event" handler="BG_in" swapped="no"/>
           </object>
           <packing>
@@ -204,7 +196,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="Display">
+          <object class="GtkLabel" id="press_key">
             <property name="height_request">15</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -217,7 +209,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLevelBar">
+          <object class="GtkLevelBar" id="level_bar">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="value">100.89</property>
@@ -412,99 +404,7 @@
       </object>
     </child>
   </object>
-  <object class="GtkImage" id="Tick1">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">dialog-yes</property>
-    <property name="icon_size">6</property>
-  </object>
-  <template class="ABOUT" parent="GtkAboutDialog">
-    <property name="can_focus">False</property>
-    <property name="type">popup</property>
-    <property name="window_position">mouse</property>
-    <property name="type_hint">menu</property>
-    <property name="gravity">center</property>
-    <property name="program_name">Kaun Banega Crorepati 2019</property>
-    <property name="version">Ver 0.1</property>
-    <property name="website_label" translatable="yes">- Arka Haldi
--Jainam Jain
--Prathamesh Bagekari
--Sanchit Gajam</property>
-    <property name="authors">- Arka Haldi
--Jainam Jain
--Prathamesh Bagekari
--Sanchit Gajam</property>
-    <property name="translator_credits" translatable="yes">2018</property>
-    <property name="logo">KBC_ABOUT.jpg</property>
-    <child>
-      <placeholder/>
-    </child>
-    <child internal-child="vbox">
-      <object class="GtkBox">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">OK</property>
-                <property name="width_request">400</property>
-                <property name="height_request">60</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="image">Tick1</property>
-                <property name="use_underline">True</property>
-                <property name="image_position">bottom</property>
-                <property name="always_show_image">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Kaun Banega Crorepati game
-developed and created by
-Group 4 D1
-</property>
-            <property name="justify">center</property>
-            <property name="wrap">True</property>
-            <property name="selectable">True</property>
-            <property name="width_chars">35</property>
-            <property name="angle">7.5</property>
-            <property name="max_width_chars">75</property>
-            <attributes>
-              <attribute name="font-desc" value="Sawasdee Bold 16"/>
-              <attribute name="foreground" value="#c1c17d7d1111"/>
-              <attribute name="background" value="#0f0d01011b1b"/>
-              <attribute name="gravity" value="south"/>
-              <attribute name="gravity-hint" value="natural"/>
-            </attributes>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </template>
-  <object class="GtkWindow">
+  <object class="GtkWindow" id="Result">
     <property name="can_focus">False</property>
     <child>
       <placeholder/>
@@ -591,6 +491,101 @@ Take 60 s to call a friend
 and ask them for correct answer.</property>
     <property name="pixbuf">Phonelive.icon</property>
     <signal name="button-press-event" handler="PHONE_F" swapped="no"/>
+  </object>
+  <object class="GtkImage" id="image5">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-apply</property>
+  </object>
+  <object class="GtkWindow" id="ABOUT">
+    <property name="can_focus">False</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="pixbuf">KBC_ABOUT.jpg</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Kaun Banega Crorepati 2019 
+ver 2.0</property>
+            <property name="justify">center</property>
+            <attributes>
+              <attribute name="font-desc" value="Nakula Bold 17"/>
+              <attribute name="weight" value="ultraheavy"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">SPECIAL THANKS to:
+  -Rudresh Veerkhare
+  -Jiten sidhpura</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">
+GROUP MEMBERS:
+-Arka Haldi
+</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="label" translatable="yes">OK</property>
+            <property name="width_request">400</property>
+            <property name="height_request">60</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="image">image5</property>
+            <property name="image_position">bottom</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+      </object>
+    </child>
   </object>
   <object class="GtkImage" id="inactive1">
     <property name="visible">True</property>
@@ -779,8 +774,6 @@ and ask them for correct answer.</property>
                     <property name="baseline_position">top</property>
                     <child>
                       <object class="GtkButton">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action"/>
                         <property name="width_request">75</property>
                         <property name="height_request">75</property>
                         <property name="visible">True</property>
@@ -804,8 +797,6 @@ Increasing chances of success.</property>
                     </child>
                     <child>
                       <object class="GtkButton">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action"/>
                         <property name="width_request">75</property>
                         <property name="height_request">75</property>
                         <property name="visible">True</property>
@@ -1413,8 +1404,6 @@ and ask them for correct answer.</property>
             <child>
               <object class="GtkCheckButton">
                 <property name="label" translatable="yes">B: option1</property>
-                <property name="use_action_appearance">True</property>
-                <property name="related_action"/>
                 <property name="width_request">-1</property>
                 <property name="height_request">-1</property>
                 <property name="visible">True</property>
@@ -1423,8 +1412,6 @@ and ask them for correct answer.</property>
                 <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
                 <property name="border_width">7</property>
                 <property name="action_name">CLICK</property>
-                <property name="xalign">0</property>
-                <property name="yalign">0.5</property>
                 <property name="always_show_image">True</property>
                 <property name="draw_indicator">False</property>
                 <signal name="toggled" handler="OPTION(1);" swapped="no"/>
@@ -1437,8 +1424,6 @@ and ask them for correct answer.</property>
             <child>
               <object class="GtkCheckButton">
                 <property name="label" translatable="yes">C: option2</property>
-                <property name="use_action_appearance">True</property>
-                <property name="related_action"/>
                 <property name="width_request">-1</property>
                 <property name="height_request">64</property>
                 <property name="visible">True</property>
@@ -1447,8 +1432,6 @@ and ask them for correct answer.</property>
                 <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
                 <property name="border_width">7</property>
                 <property name="action_name">CLICK</property>
-                <property name="xalign">0</property>
-                <property name="yalign">0.5</property>
                 <property name="always_show_image">True</property>
                 <property name="draw_indicator">False</property>
                 <signal name="toggled" handler="OPTION(2);" swapped="no"/>
@@ -1461,8 +1444,6 @@ and ask them for correct answer.</property>
             <child>
               <object class="GtkCheckButton">
                 <property name="label" translatable="yes">D: option3</property>
-                <property name="use_action_appearance">True</property>
-                <property name="related_action"/>
                 <property name="width_request">-1</property>
                 <property name="height_request">-1</property>
                 <property name="visible">True</property>
@@ -1471,8 +1452,6 @@ and ask them for correct answer.</property>
                 <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
                 <property name="border_width">7</property>
                 <property name="action_name">CLICK</property>
-                <property name="xalign">0</property>
-                <property name="yalign">0.5</property>
                 <property name="always_show_image">True</property>
                 <property name="draw_indicator">False</property>
                 <signal name="toggled" handler="OPTION(3);" swapped="no"/>
@@ -1485,8 +1464,6 @@ and ask them for correct answer.</property>
             <child>
               <object class="GtkCheckButton">
                 <property name="label" translatable="yes">A: option0</property>
-                <property name="use_action_appearance">True</property>
-                <property name="related_action"/>
                 <property name="name">OPTION 0</property>
                 <property name="height_request">64</property>
                 <property name="visible">True</property>
