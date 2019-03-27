@@ -36,15 +36,9 @@ STRT
     Option options[45][4] ;
 }Q_paper1;
 
-Q_paper0 hard;
-Q_paper1 medium;
-Q_paper0 easy;
-
-void RI(short int*q,int n)//Random Initialisation[see U_RANDOM below]
-	{
-		for(int i=0;i<n; i++)
-		*(q+i)=0;
-	}
+Q_paper0* hard;
+Q_paper1* medium;
+Q_paper0* easy;
 
 void delay(float N)//magnification of 1 second.
 {
@@ -52,9 +46,9 @@ void delay(float N)//magnification of 1 second.
 }
 //Note that this can only and only be used when n<L[obviously].
 void U_RANDOM(int* p,int n,int L)//Unique_Random selection of n numbers from limit 0 to L , p is ptr to integer array of in numbers. 
-{ short int a[L];//Shadow of the L possibilities
-    	int i=0;
-	RI (a,L);
+{ static short int a[L]={0};//Shadow of the L possibilities
+        int i=0;
+        
         while(i<n)
         {
             *(p+i)= rand()%L;
@@ -66,7 +60,6 @@ void U_RANDOM(int* p,int n,int L)//Unique_Random selection of n numbers from lim
             }
         }
 }
-
 void ERROR1()//Error if file_pointer doesn't find file.
 {
     if (file_p== NULL)
@@ -236,13 +229,13 @@ void SOUND(char z)
     ERROR1();
 
     fread(&easy,sizeof(Q_paper0),1,file_p);
-
+    fclose(file_p);
 	file_p = fopen("KBC_QBM.bin","r");
 
     ERROR1();
 
     fread(&medium,sizeof(Q_paper1),1,file_p);
-
+    fclose(file_p);
 
 	file_p = fopen("KBC_QBH.bin","r");
 
