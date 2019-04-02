@@ -107,7 +107,7 @@ short int get_question(int n)
 	}
 }
 
-void check_answer(GtkToggleButton button,gpointer user_data)
+void check_answer(GtkToggleButton* button,gpointer user_data)
 {
 	DATA*game = user_data;
 	char dummy[4][9];
