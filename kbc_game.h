@@ -17,7 +17,7 @@
 #define thred_parameter void * restrict   
 
 
-STR
+STR//typedef struct
 {
 	int easy_index[5];
 	int medium_index[5];
@@ -29,7 +29,7 @@ STR
     char money[12];
 }Level;
 
-STR//typedef struct
+STR
 {
 	char string[450];
 }Question;
@@ -77,7 +77,7 @@ STR
 
 
   GtkMenuItem\
-  *menu_about;
+  *withdraw;
 
 
   GtkLabel\
@@ -153,6 +153,20 @@ End of gtk objects structs...
 
 //CORE functions-->
 
+/*
+Delays execution by some number of milliseconds.
+*/
+void delay(int number_of_milliseconds); 
+
+/*
+Prints on the widget at the required delay on a button
+*/
+void gtk_button_delay_print(GtkButton*button,char* string,int milisec);
+
+/*
+Prints on the widget at the required delay on a label
+*/
+void gtk_label_delay_print(GtkLabel*label,char* string,int milisec);
 
 /*
 Unique_Random selection of 5 numbers 
@@ -161,6 +175,32 @@ q is ptr to Index having,
 the chosen random question numbers.
 */
 void unique_random(Index* q);
+
+/*
+Inputs the current question, and outputs the correct answer 
+to that question, in the meantime,fetching the 
+corresponding questions,options,correct answer from the bin files.
+*/
+short int get_question(int n);
+
+/*
+Passed as the callback function attached to every button;
+and checks if the button matches the current question's 
+correct answer, changes values accordingly
+*/
+void check_answer(GtkToggleButton* button,gpointer user_data);
+
+/*
+this prepares the screen for the next question and
+refreshes everything to default values.
+*/
+void next_question(void);
+
+/*
+This function silently changes the final screen text 
+as one plays the game, to update as its value as they win.
+*/
+void change_final_screen_display(char* string);
 
 /*
 running the specific sound file designated by the 
@@ -172,7 +212,6 @@ L-Lock,
 C-Checkpoint,
 W-Wrong.
 */
-
 void sound(char);
 
 /*Error if file_pointer doesn't find file.*/
@@ -209,7 +248,9 @@ returns false until float fraction = 1.0
 static gboolean fill(GtkProgressBar *bar,gpointer user_data);
 
 
-/*Sets the intro label to the text required*/
+/*
+Sets the intro label to the text required
+*/
 void set_intro_label(float fraction, GtkLabel *label);
 
 /*
@@ -227,6 +268,28 @@ reseting the progress bar.
 */
 void game_restart(GtkButton*button, gpointer user_data);
 
+/*
+calls phone a friend window and changes the icon to grey.
+*/
+void phone_a_friend_call(GtkButton*button ,gpointer user_data)/*new*/
+
+/*
+calls the joker to do what it has to do. 
+*/
+void joker_select(GtkButton*button,gpointer user_data)/*new*/
+
+
+/*
+To be removed after taking care of the bug of strcmp() error
+*/
+void option0_toggled(GtkToggleButton*button,gpointer user_data);
+gboolean option_0(gpointer user_data);
+void option1_toggled(GtkToggleButton*button,gpointer user_data);
+gboolean option_1(gpointer user_data);
+void option2_toggled(GtkToggleButton*button,gpointer user_data);
+gboolean option_2(gpointer user_data);
+void option3_toggled(GtkToggleButton*button,gpointer user_data);
+gboolean option_3(gpointer user_data);
 
 //The following functions do exactly what their name suggests...
 void result_screen(GtkMenuItem *button,gpointer user_data);
@@ -238,18 +301,6 @@ void hide_audience_vote(GtkButton *button,gpointer user_data);
 void close_window(GtkWindow *window);
 void hide_window(GtkButton *button);
 
-void option0_toggled(GtkToggleButton*button,gpointer user_data);
-gboolean option_0(gpointer user_data);
-void option1_toggled(GtkToggleButton*button,gpointer user_data);
-gboolean option_1(gpointer user_data);
-void option2_toggled(GtkToggleButton*button,gpointer user_data);
-gboolean option_2(gpointer user_data);
-void option3_toggled(GtkToggleButton*button,gpointer user_data);
-gboolean option_3(gpointer user_data);
-short int get_question(int n);
-void check_answer(GtkToggleButton button,gpointer user_data);
-void next_question(void);
-void change_final_screen_display(char* string);
 
 // end of function prototypes...
 

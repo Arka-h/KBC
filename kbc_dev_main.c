@@ -56,7 +56,7 @@ int main( int argc, char* argv[])
   game->option__[1] = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder,"option_2__"));
   game->option__[2] = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder,"option_3__"));
   game->option__[3] = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder,"option_4__"));
-  game->start_game = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder,"start_game"));
+  game->start_game  = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder,"start_game"));
 
   game->audience_cover_image = GTK_IMAGE(gtk_builder_get_object(builder,"audience_vote_cover_image"));
   game->audience_option[0]   = GTK_IMAGE(gtk_builder_get_object(builder,"audience_vote_option_0"));
@@ -77,11 +77,11 @@ int main( int argc, char* argv[])
   game->image_fore[11]       = GTK_IMAGE(gtk_builder_get_object(builder,"image_fore12"));
 
   game->question_label = GTK_LABEL(gtk_builder_get_object(builder,"question_label"));
-  game->intro_label =    GTK_LABEL(gtk_builder_get_object(builder,"intro_label"));
-  game->host_label =     GTK_LABEL(gtk_builder_get_object(builder,"Info"));
-  game->end_label = GTK_LABEL(gtk_builder_get_object(builder,"end_label"));
+  game->intro_label    = GTK_LABEL(gtk_builder_get_object(builder,"intro_label"));
+  game->host_label     = GTK_LABEL(gtk_builder_get_object(builder,"Info"));
+  game->end_label      = GTK_LABEL(gtk_builder_get_object(builder,"end_label"));
   
-  game->progress_bar =               GTK_PROGRESS_BAR(gtk_builder_get_object(builder,"progress_bar"));
+  game->progress_bar               =  GTK_PROGRESS_BAR(gtk_builder_get_object(builder,"progress_bar"));
   game->audience_vote_progress_bar = GTK_PROGRESS_BAR(gtk_builder_get_object(builder,"audience_vote_progress_bar"));
 
   game->exit_button =            GTK_BUTTON(gtk_builder_get_object(builder,"exit_button"));
@@ -125,6 +125,8 @@ int main( int argc, char* argv[])
   game->q_[12] =                 GTK_BUTTON(gtk_builder_get_object(builder,"q13_"));
   game->q_[13] =                 GTK_BUTTON(gtk_builder_get_object(builder,"q14_"));
   game->q_[14] =                 GTK_BUTTON(gtk_builder_get_object(builder,"q15_"));
+
+  game->withdraw = GTK_MENU_ITEM(gtk_builder_get_object(builder,"withdraw"));
 
 
   gtk_builder_connect_signals(builder,game);//connecting signals.

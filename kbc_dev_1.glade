@@ -1110,9 +1110,8 @@ GROUP MEMBERS:
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkMenuItem" id="G_OPTONS">
+              <object class="GtkMenuItem" id="game_options">
                 <property name="name">Game Options</property>
-                <property name="height_request">30</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Game Options</property>
@@ -1121,7 +1120,7 @@ GROUP MEMBERS:
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkMenuItem" id="Withdraw">
+                      <object class="GtkMenuItem" id="withdraw">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">Withdraw with the money awarded(Ctrl+W)</property>
@@ -1148,7 +1147,7 @@ GROUP MEMBERS:
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem">
+              <object class="GtkMenuItem" id="instructions">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">(Ctrl+I)</property>
@@ -1159,7 +1158,7 @@ GROUP MEMBERS:
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem">
+              <object class="GtkMenuItem" id="exit">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">close the game</property>

@@ -4,7 +4,14 @@
  KBC Game core functions
 ************************************************************************************************************************** 
 */
-	
+void delay(int number_of_milliseconds) 
+{ 
+    // Storing start time 
+    clock_t start_time = clock(); 
+  
+    // looping till required time is not acheived 
+    while (clock() < start_time + number_of_milliseconds*1000) ; 
+} 
 
 void sound(char z)
 	// Note that this function can only work in some cases, its not general 
@@ -100,7 +107,7 @@ short int get_question(int n)
 	}
 }
 
-void check_answer(GtkToggleButton button,gpointer user_data)
+void check_answer(GtkToggleButton* button,gpointer user_data)
 {
 	DATA*game = user_data;
 	char dummy[4][9];
@@ -114,19 +121,40 @@ void check_answer(GtkToggleButton button,gpointer user_data)
 	{
 		if(strcmp(gtk_widget_get_name((GtkWidget*)button),dummy[i])==0)
 		{
-			if(correct_ans==0)
-			{
-				current_question++;
-				next_question();	
-
-				gtk_widget_hide((GtkWidget*)game->q[current_question-1]);
-  				gtk_widget_show((GtkWidget*)game->q_[current_question-1]);
-  				sprintf(string,"%s%s",string,level[current_question].money);
-  				change_final_screen_display(string);
-
-			}
+			delay(5);
+			gtk_widget_hide((GtkWidget*)game->option[i]);
+			gtk_widget_show((GtkWidget*)game->option_[i]);
+			/*split into threads and relay sound...*/
+			/*delay till background music ends*/
+			if(correct_ans==i)
+				{
+				
+					gtk_widget_hide((GtkWidget*)game->q[current_question]);
+  					gtk_widget_show((GtkWidget*)game->q_[current_question]);
+  					sprintf(string,"%s%s",string,level[current_question].money);
+  					change_final_screen_display(string);
+  					current_question++;
+					if(current_question==15)
+						{
+							result_screen(game->withdraw,user_data);
+							//exit game playing victory song pthread..
+						}
+					else
+						{
+							next_question();
+						}
+				}
 			else 
-				change_final_screen_display(string);
+				{
+					change_final_screen_display(string);
+					result_screen(game->withdraw,user_data);
+				}
+
+		}
+		else if(strcmp(gtk_widget_get_name((GtkWidget*)button),dummy[i])!=0)
+		{
+			gtk_widget_hide((GtkWidget*)game->option[i]);
+			gtk_widget_show((GtkWidget*)game->option__[i]);
 		}	
 	}
 	
@@ -135,7 +163,13 @@ void check_answer(GtkToggleButton button,gpointer user_data)
 void next_question()
 {
 	correct_ans = get_question(current_question);
-
+	for(int i=0;i<4;i++)
+	{
+		gtk_widget_hide((GtkWidget*)game->option_[i]);
+		gtk_widget_hide((GtkWidget*)game->option__[i]);
+		gtk_widget_show((GtkWidget*)game->option[i]);	
+	}
+	
 }
 
 void change_final_screen_display(char* string)
@@ -224,39 +258,33 @@ void file_error_function()//Error if file_pointer doesn't find file.
 }
 //idea of killing bug by printing ^c on terminal
 
-/*void result()
-	{
-		if(a==0)
-		{
-			system("clear");
-
-			printf("THANK YOU FOR JOINING US TODAY\n\nYOU HAVE WON Rs.0\n\n\n\n\n\n\npress any char to exit\n");
-			scanf(" %c",&aux);
-		}
-		else if(a==1)
-		{
-			system("clear");
-		
-			printf("THANK YOU FOR JOINING US TODAY\n\nYOU HAVE WON Rs.10,000\n\n\n\n\n\n\npress any char to exit\n");
-			scanf(" %c",&aux);
-		}
-		else if(a==2)
-		{
-			system("clear");
-		
-			printf("THANK YOU FOR JOINING US TODAY\n\nYOU HAVE WON Rs.3,20,000.\n\n\n\n\n\n\npress any char to exit\n");
-			scanf(" %c",&aux);
-		}
-	}*/
-
-// void delay_print(GtkLabel*label,char *string,int milisec)
-// {
-// 	char* access = (char*)malloc(2*sizeof(string));
-// 	for(int i=0;i<sizeof(string);i++)
-// 	{
-// 		access+2*i=string;
-// 		*(access+2*i-1)='\0'
-// 	}
-// 	g_timeout_add(milisec,(GSourceFunc),)
+void gtk_label_delay_print(GtkLabel*label,char* string,int milisec)
+{
+	char copy[400];//use malloc in future
+	int n = strlen(string);//excluding \0
 	
-// }
+	for(int i=0;i<n;i++)
+	{
+		delay(milisec);
+		sprintf(copy,"%s",string);
+     	*(copy+i)='\0';
+     	gtk_label_set_label(label,copy);
+		
+	}
+	
+}
+void gtk_button_delay_print(GtkButton*button,char* string,int milisec)
+{
+	char copy[400];//use malloc in future
+	int n = strlen(string);//excluding \0
+	
+	for(int i=0;i<n;i++)
+	{
+		delay(milisec);
+		sprintf(copy,"%s",string);
+     	*(copy+i)='\0';
+     	gtk_label_set_label(button,copy);
+		
+	}
+	
+}

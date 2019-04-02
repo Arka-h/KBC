@@ -217,7 +217,10 @@ void intro_level_bar (GtkToggleButton *button,gpointer user_data)
 	
 	gtk_progress_bar_set_fraction(game->progress_bar,0.0);
 
-	g_timeout_add(2.3/*Interval after which function will run*/,(GSourceFunc)entry_fill/*Return gboolean FALSE to exit else wait for 2.3 milisec*/, user_data);//non-modular function,(?threads maybe?)
+	g_timeout_add(2.3/*Interval after which function will run*/,\
+	(GSourceFunc)entry_fill/*Return gboolean FALSE to exit else wait for 2.3 milisec*/,\
+	 user_data);//non-modular function,(?threads maybe?)
+
 	// g_timeout_add(50,(GSourceFunc)animation, user_data);//25 frames per second 1000/25
 	g_timeout_add(12500,(GSourceFunc)start_game, user_data);//23500+11sec
 
@@ -265,17 +268,6 @@ void result_screen(GtkMenuItem *button,gpointer user_data)
 	gtk_widget_hide((GtkWidget *)game->about_devs);
 	gtk_widget_show((GtkWidget *)game->end_game);
 }
-// void print_strings(int n)
-// {
-// 	/*Each n will be string number to be displayed in sequence*/
-// 	switch(n)
-// 	{
-// 		case 0 :{	while(string[0][int i]!=)
-// 					printf("%c",string[0][i]);i++;
-// 	}
-
-// }
-
 
 void hide_audience_vote(GtkButton *button,gpointer user_data)
 {

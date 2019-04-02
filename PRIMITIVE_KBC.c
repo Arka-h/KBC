@@ -36,9 +36,9 @@ STRT
     Option options[45][4] ;
 }Q_paper1;
 
-Q_paper0* hard;
-Q_paper1* medium;
-Q_paper0* easy;
+Q_paper0 hard;
+Q_paper1 medium;
+Q_paper0 easy;
 
 void delay(float N)//magnification of 1 second.
 {
