@@ -188,7 +188,7 @@ Passed as the callback function attached to every button;
 and checks if the button matches the current question's 
 correct answer, changes values accordingly
 */
-void check_answer(GtkToggleButton button,gpointer user_data);
+void check_answer(GtkToggleButton* button,gpointer user_data);
 
 /*
 this prepares the screen for the next question and
