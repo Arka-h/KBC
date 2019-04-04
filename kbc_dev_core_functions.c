@@ -10,7 +10,7 @@ void delay(int number_of_milliseconds)
     clock_t start_time = clock(); 
   
     // looping till required time is not acheived 
-    while (clock() < start_time + number_of_milliseconds*1000) ; 
+    while (clock() < start_time + number_of_milliseconds*1000); 
 } 
 
 void sound(char z)
@@ -51,17 +51,18 @@ short int get_question(int n)
 		file_error_function();
 		
 		sprintf(temp,"%d. %s",n+1,easy.questions[x.easy_index[n]].string);
-		printf("%s",temp);
+		printf("\n%s",temp);
 
 		gtk_label_set_label((GtkLabel*)game->question_label,temp);
 		for(int i=0;i<4;i++)
 		{
 			sprintf(temp,"%c) %s",65+i,easy.options[x.easy_index[n]][i].string);
-			printf("%s",temp);
+			printf("\n%s",temp);
 			gtk_button_set_label((GtkButton*)game->option[i],temp);
 			gtk_button_set_label((GtkButton*)game->option_[i],temp);
 			gtk_button_set_label((GtkButton*)game->option__[i],temp);
 		}
+		
 		fclose(file_p);
 		option_reset();
 		return easy.correct_ans[x.easy_index[n]];
@@ -86,6 +87,7 @@ short int get_question(int n)
 			gtk_button_set_label((GtkButton*)game->option_[i],temp);
 			gtk_button_set_label((GtkButton*)game->option__[i],temp);			
 		}
+		
 		fclose(file_p);
 		option_reset();
 		return medium.correct_ans[x.easy_index[n]];
@@ -110,6 +112,7 @@ short int get_question(int n)
 			gtk_button_set_label((GtkButton*)game->option__[i],temp);
 	
 		}
+		
 		fclose(file_p);
 		option_reset();
 		return hard.correct_ans[x.easy_index[n]];
@@ -134,17 +137,18 @@ void check_answer(GtkToggleButton* button,gpointer user_data)
 			// delay(5);
 			gtk_widget_hide((GtkWidget*)game->option[i]);
 			gtk_widget_show((GtkWidget*)game->option_[i]);
-			/*split into threads and relay sound...*/
+			
 			thread_1 = pthread_create(&thread_1,NULL,(thred_function)sound, (thred_parameter)'L');
-			/*delay till background music ends*/
+			delay(5000);
 			pthread_join(thread_1,NULL);
 			if(correct_ans==i)
 				{
 				
 					gtk_widget_hide((GtkWidget*)game->q[current_question]);
-  					gtk_widget_show((GtkWidget*)game->q_[current_question]);
+  					gtk_widget_show((GtkWidget*)game->q_[current_question]);//tick change
+
   					sprintf(string,"%s%s",string,level[current_question].money);
-  					change_final_screen_display(string);
+  					change_final_screen_display(string);//silently changing money earned.
   					current_question++;
 					if(current_question==15)
 						{
@@ -152,18 +156,19 @@ void check_answer(GtkToggleButton* button,gpointer user_data)
 						thread_1 = pthread_create(&thread_1,NULL,(thred_function)sound, (thred_parameter)'E');
 							// delay(5000);
 							result_screen(game->withdraw,user_data);
-							//exit game playing victory song pthread..
 							pthread_join(thread_1,NULL);
 						}
 					else
 						{
 							// delay(5000);
+							printf("\n\n%c\n\n",65+correct_ans);
 							next_question();
 						}
 				}
 			else 
 				{
 					// delay(5);
+					printf("\n\n%c\n\n",65+correct_ans);
 					change_final_screen_display(string);
 					result_screen(game->withdraw,user_data);
 				}
@@ -208,9 +213,21 @@ void change_final_screen_display(char* string)
 		gtk_label_set_label((GtkLabel*)game->end_label,string);
 		pthread_join(thread_1,NULL);
 	}
-	else if((strcmp(string,"THANK YOU FOR JOINING US TODAY\nYOU HAVE WON Rs.")!=0))
+	else if((strcmp(string,"THANK YOU FOR JOINING US TODAY\nYOU HAVE WON Rs.")!=0)&&\
+			(current_question==4)&&\
+			(current_question==9)&&\
+			(current_question!=14))
 	{
 		thread_1 = pthread_create(&thread_1,NULL,(thred_function)sound, (thred_parameter)'C');		
+		gtk_label_set_label((GtkLabel*)game->end_label,string);
+		pthread_join(thread_1,NULL);
+	}
+	else if((strcmp(string,"THANK YOU FOR JOINING US TODAY\nYOU HAVE WON Rs.")!=0)&&\
+			(current_question!=4)&&\
+			(current_question!=9)&&\
+			(current_question!=14))
+	{
+		thread_1 = pthread_create(&thread_1,NULL,(thred_function)sound, (thred_parameter)'Q');		
 		gtk_label_set_label((GtkLabel*)game->end_label,string);
 		pthread_join(thread_1,NULL);
 	}
