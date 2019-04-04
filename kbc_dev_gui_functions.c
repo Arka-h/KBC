@@ -160,38 +160,38 @@ void set_intro_label(float fraction, GtkLabel *label)
 }
 
 
-gboolean animation(gpointer user_data)
-{
-	DATA*game = user_data;
+// gboolean animation(gpointer user_data)
+// {
+// 	DATA*game = user_data;
 
-	static int i=0;
-	static int counter=0;
-	if(counter<=300)
-	{
-		if(i<10)
-			{
-				gtk_widget_hide((GtkWidget*)game->image_fore[i]);
-				gtk_widget_show((GtkWidget*)game->image_fore[++i]);
-				counter++;
-				return TRUE;
-			}
-		else if(i==10)
-			{
-				gtk_widget_hide((GtkWidget*)game->image_fore[i]);
-				gtk_widget_show((GtkWidget*)game->image_fore[++i]);
-				counter++;
-				return TRUE;
-			}
-		else if(i==11)
-			{
-				gtk_widget_hide((GtkWidget*)game->image_fore[i]);
-				gtk_widget_show((GtkWidget*)game->image_fore[--i]);
-				counter++;
-				return TRUE;
-			}
-	}
-	return FALSE;
-}
+// 	static int i=0;
+// 	static int counter=0;
+// 	if(counter<=300)
+// 	{
+// 		if(i<10)
+// 			{
+// 				gtk_widget_hide((GtkWidget*)game->image_fore[i]);
+// 				gtk_widget_show((GtkWidget*)game->image_fore[++i]);
+// 				counter++;
+// 				return TRUE;
+// 			}
+// 		else if(i==10)
+// 			{
+// 				gtk_widget_hide((GtkWidget*)game->image_fore[i]);
+// 				gtk_widget_show((GtkWidget*)game->image_fore[++i]);
+// 				counter++;
+// 				return TRUE;
+// 			}
+// 		else if(i==11)
+// 			{
+// 				gtk_widget_hide((GtkWidget*)game->image_fore[i]);
+// 				gtk_widget_show((GtkWidget*)game->image_fore[--i]);
+// 				counter++;
+// 				return TRUE;
+// 			}
+// 	}
+// 	return FALSE;
+// }
 
 gboolean fill(GtkProgressBar* bar,gpointer user_data)
 {
@@ -223,7 +223,7 @@ void intro_level_bar (GtkToggleButton *button,gpointer user_data)
 	(GSourceFunc)entry_fill/*Return gboolean FALSE to exit else wait for 2.3 milisec*/,\
 	 user_data);//non-modular function,(?threads maybe?)
 
-	g_timeout_add(50,(GSourceFunc)animation, user_data);//25 frames per second 1000/25
+	// g_timeout_add(50,(GSourceFunc)animation, user_data);//25 frames per second 1000/25
 	g_timeout_add(12500,(GSourceFunc)start_game, user_data);//23500+11sec
 
 	pthread_join(thread_1,NULL);
