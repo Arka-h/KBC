@@ -779,6 +779,29 @@
     <property name="can_focus">False</property>
     <property name="stock">gtk-about</property>
   </object>
+  <object class="GtkWindow" id="dynamic">
+    <property name="name">dynamic</property>
+    <property name="can_focus">False</property>
+    <property name="type">popup</property>
+    <property name="window_position">center</property>
+    <property name="type_hint">dialog</property>
+    <property name="gravity">south</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkButton" id="Result">
+        <property name="label" translatable="yes">Result</property>
+        <property name="name">Result</property>
+        <property name="width_request">1029</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="relief">half</property>
+        <signal name="activate" handler="hide_result_button" swapped="no"/>
+      </object>
+    </child>
+  </object>
   <object class="GtkImage" id="image1">
     <property name="width_request">100</property>
     <property name="visible">True</property>
@@ -960,6 +983,7 @@ ver 2.0</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">SPECIAL THANKS to:
   -Rudresh Veerkhare
+  -Jiten Sidhpura
   -Ebrahim G (E.G)</property>
           </object>
           <packing>
@@ -2297,7 +2321,6 @@ confused, about which to select</property>
                             <property name="image">inactive1</property>
                             <property name="relief">none</property>
                             <property name="always_show_image">True</property>
-                            <signal name="clicked" handler="change_q1" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -2428,7 +2451,7 @@ confused, about which to select</property>
                 </child>
                 <child>
                   <object class="GtkToggleButton" id="option_1_">
-                    <property name="label" translatable="yes">1)Option_1</property>
+                    <property name="label" translatable="yes">1)Option_1_</property>
                     <property name="name">option_1_</property>
                     <property name="height_request">64</property>
                     <property name="can_focus">True</property>
@@ -2444,7 +2467,7 @@ confused, about which to select</property>
                 </child>
                 <child>
                   <object class="GtkToggleButton" id="option_1__">
-                    <property name="label" translatable="yes">1)Option_1</property>
+                    <property name="label" translatable="yes">1)Option_1__</property>
                     <property name="name">option_1__</property>
                     <property name="height_request">64</property>
                     <property name="visible">True</property>
@@ -2489,7 +2512,7 @@ confused, about which to select</property>
                 </child>
                 <child>
                   <object class="GtkToggleButton" id="option_2_">
-                    <property name="label" translatable="yes">2)Option_2</property>
+                    <property name="label" translatable="yes">2)Option_2_</property>
                     <property name="name">option_2_</property>
                     <property name="height_request">64</property>
                     <property name="can_focus">True</property>
@@ -2504,7 +2527,7 @@ confused, about which to select</property>
                 </child>
                 <child>
                   <object class="GtkToggleButton" id="option_2__">
-                    <property name="label" translatable="yes">2)Option_2</property>
+                    <property name="label" translatable="yes">2)Option_2__</property>
                     <property name="name">option_2__</property>
                     <property name="height_request">64</property>
                     <property name="visible">True</property>
@@ -2548,7 +2571,7 @@ confused, about which to select</property>
                 </child>
                 <child>
                   <object class="GtkToggleButton" id="option_3_">
-                    <property name="label" translatable="yes">3)Option_3</property>
+                    <property name="label" translatable="yes">3)Option_3_</property>
                     <property name="name">option_3_</property>
                     <property name="height_request">64</property>
                     <property name="can_focus">True</property>
@@ -2563,7 +2586,7 @@ confused, about which to select</property>
                 </child>
                 <child>
                   <object class="GtkToggleButton" id="option_3__">
-                    <property name="label" translatable="yes">3)Option_3</property>
+                    <property name="label" translatable="yes">3)Option_3__</property>
                     <property name="name">option_3__</property>
                     <property name="height_request">64</property>
                     <property name="visible">True</property>
@@ -2607,7 +2630,7 @@ confused, about which to select</property>
                 </child>
                 <child>
                   <object class="GtkToggleButton" id="option_4_">
-                    <property name="label" translatable="yes">4)Option_4</property>
+                    <property name="label" translatable="yes">4)Option_4_</property>
                     <property name="name">option_4_</property>
                     <property name="height_request">64</property>
                     <property name="can_focus">True</property>
@@ -2622,7 +2645,7 @@ confused, about which to select</property>
                 </child>
                 <child>
                   <object class="GtkToggleButton" id="option_4__">
-                    <property name="label" translatable="yes">4)Option_4</property>
+                    <property name="label" translatable="yes">4)Option_4__</property>
                     <property name="name">option_4__</property>
                     <property name="height_request">64</property>
                     <property name="visible">True</property>
