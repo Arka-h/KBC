@@ -3,7 +3,7 @@ type
 {
 	color : red ;
 	font size : 130%;
-} 
+} /home/arka/PMDS/KBC/UNUSED
 .class 
 
 and 
@@ -11,7 +11,7 @@ and
 #id
 
 */
-window#kbc_intro,#audience_vote,#main_window,#end_game
+window#kbc_intro,#audience_vote,#main_window,#end_game,#dynamic
 {
 	border-image :none;
 	background-image: none;
@@ -79,7 +79,7 @@ button#option_1,#option_2,#option_3,#option_4
 	border : 3px solid #5581ae;
 	border-radius: 100px;
 }
-button#option_1__,#option_2__,#option_3__,#option_4__
+/*button#option_1__,#option_2__,#option_3__,#option_4__
 {
 
 	color: white;
@@ -89,7 +89,7 @@ button#option_1__,#option_2__,#option_3__,#option_4__
 	background-color: #08000d;
 	border : 3px solid #5581ae;
 	border-radius: 100px;
-}
+}*/
 button#option_1_,#option_2_,#option_3_,#option_4_
 {
 	color: white;
@@ -102,7 +102,7 @@ button#option_1_,#option_2_,#option_3_,#option_4_
 }
 button#option_1:hover,#option_2:hover,#option_3:hover,#option_4:hover
 {
-	transition: 3000ms;
+	transition: 2000ms;
 	background-color : green;
 	color : white;
 }
@@ -110,7 +110,17 @@ button#option_1:active,#option_2:active,#option_3:active,#option_4:active
 {
 	
 	background-color: red;
-	transition: 2ms;
+	transition: 4ms;
+}
+button#Result
+{
+	color: white;
+	opacity: 1;
+	border-image: none;
+	background-image: none;
+	background-color: #08000d;
+	border : 3px solid #5581ae;
+	border-radius: 100px;
 }
 /*button#option_1__:hover,#option_2__:hover,#option_3__:hover,#option_4__:hover
 {
@@ -188,4 +198,3 @@ progressbar progress:active{
 	border-radius: 50px;
 	border : 0px;
 }
-
