@@ -3,6 +3,7 @@
 /*The main file...*/
 int main( int argc, char* argv[]) 
 { 
+  
   sprintf(level[0].money, "1,000");
   sprintf(level[1].money, "3,000");
   sprintf(level[2].money, "4,000");
@@ -43,6 +44,7 @@ int main( int argc, char* argv[])
   game->main_screen =   GTK_WINDOW(gtk_builder_get_object(builder, "MAIN_SCREEN"));
   game->audience_vote = GTK_WINDOW(gtk_builder_get_object(builder, "AUDIENCE_VOTE"));
   game->end_game =      GTK_WINDOW(gtk_builder_get_object(builder, "RESULT"));
+  game->dynamic =      GTK_WINDOW(gtk_builder_get_object(builder, "dynamic"));
 
   game->option[0]   = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder,"option_1"));
   game->option[1]   = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder,"option_2"));
@@ -93,6 +95,7 @@ int main( int argc, char* argv[])
   game->phone_a_friend_ =        GTK_BUTTON(gtk_builder_get_object(builder,"phone_a_friend^"));
   game->joker =                  GTK_BUTTON(gtk_builder_get_object(builder,"joker"));
   game->joker_ =                 GTK_BUTTON(gtk_builder_get_object(builder,"joker^"));
+  game->Result =                 GTK_BUTTON(gtk_builder_get_object(builder,"Result"));
 
   game->q[0] =                   GTK_BUTTON(gtk_builder_get_object(builder,"q1"));
   game->q[1] =                   GTK_BUTTON(gtk_builder_get_object(builder,"q2"));
@@ -144,7 +147,6 @@ int main( int argc, char* argv[])
 	
   return 0;
 }
-
 
 
 
