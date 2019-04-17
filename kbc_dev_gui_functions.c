@@ -129,7 +129,6 @@ printf("\n");
 printf("\n");
 
 	gtk_widget_hide((GtkWidget *)game->end_game);
-
 	gtk_widget_hide((GtkWidget*)game->button_50_50_);
 	gtk_widget_hide((GtkWidget*)game->button_audience_vote_);
 	gtk_widget_hide((GtkWidget*)game->joker_);
@@ -198,7 +197,7 @@ gboolean fill(GtkProgressBar* bar,gpointer user_data)
 	DATA *game = user_data;
 	float fraction;
 	fraction = gtk_progress_bar_get_fraction(bar);
-	fraction += 0.00045;//adjusted for Total time 30s.
+	fraction += 0.00037;//adjusted for Total time 30s.
 	gtk_progress_bar_set_fraction(bar,fraction);
 	if(fraction <= 1.0)
 		return TRUE;
@@ -223,7 +222,7 @@ void intro_level_bar (GtkToggleButton *button,gpointer user_data)
 	(GSourceFunc)entry_fill/*Return gboolean FALSE to exit else wait for 2.3 milisec*/,\
 	 user_data);//non-modular function,(?threads maybe?)
 
-	// g_timeout_add(50,(GSourceFunc)animation, user_data);//25 frames per second 1000/25
+	//g_timeout_add(50,(GSourceFunc)animation, user_data);//25 frames per second 1000/25
 	g_timeout_add(12500,(GSourceFunc)start_game, user_data);//23500+11sec
 
 	pthread_join(thread_1,NULL);
@@ -351,4 +350,13 @@ void close_window(GtkWindow *window){
 void hide_window(GtkButton *button){
   GtkWidget *widget = gtk_widget_get_toplevel(GTK_WIDGET(button));//gets parent window
   gtk_widget_hide(widget);
+}
+void show_result_button()
+{
+	gtk_window_present(game->dynamic);
+
+}
+void hide_result_button(GtkButton* button,gpointer user_data)
+{
+	gtk_widget_hide((GtkWidget*)game->dynamic);
 }

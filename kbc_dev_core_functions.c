@@ -1,4 +1,6 @@
 #include"kbc_game.h"
+char* string_1 = "Welcome to Kaun Banega Crorepati 2019";
+char* string_2 = "Please read the instructions carefully before starting the game...";
 /* 
 ************************************************************************************************************************** 
  KBC Game core functions
@@ -20,10 +22,10 @@ void sound(char z)
    
 	switch (z)
 	{
-		case 'E'/*Entry*/        :  system("canberra-gtk-play -f KBC_Entry.wav");break;
+		case 'E'/*Entry*/        :  system("canberra-gtk-play -f Entry.wav");break;
 		case 'Q'/*Question*/     :  system("canberra-gtk-play -f KBC_Next_question.wav");break;
-		case 'S'/*Suspence*/     :  system("canberra-gtk-play -f KBC_Suspence1.wav");break;
-		case 'L'/*Lock*/         :  system("canberra-gtk-play -f KBC_Lock.wav");break;
+		case 'S'/*Suspence*/     :  system("canberra-gtk-play -f Suspence.wav");break;
+		case 'L'/*Lock*/         :  system("canberra-gtk-play -f Lock.wav");break;
 		case 'C'/*Checkpoint*/   :  system("canberra-gtk-play -f KBC_Win_question.wav");break;
 		case 'W'/*Wrong*/        :  system("canberra-gtk-play -f KBC_Wrong_Ans.wav");break;
 
@@ -40,10 +42,17 @@ void option_reset()
 		gtk_widget_show((GtkWidget*)game->option[i]);	
 	}
 }
+
 short int get_question(int n)
 {
-	char temp[500];
-	
+	char temp[300];
+	if(n == 0)
+	{
+		// display_message(1);
+		// delay(3000);
+		// display_message(2);
+		g_timeout_add(150,(GSourceFunc)gtk_label_delay_print,string_2);
+	}
 	if((n<5)&&(n>=0))
 	{
 		file_p = fopen("KBC_QBE.bin","r");
@@ -51,9 +60,9 @@ short int get_question(int n)
 		file_error_function();
 		
 		sprintf(temp,"%d. %s",n+1,easy.questions[x.easy_index[n]].string);
-		printf("\n%s",temp);
-
+		printf("\n %s",temp);
 		gtk_label_set_label((GtkLabel*)game->question_label,temp);
+		
 		for(int i=0;i<4;i++)
 		{
 			sprintf(temp,"%c) %s",65+i,easy.options[x.easy_index[n]][i].string);
@@ -61,10 +70,13 @@ short int get_question(int n)
 			gtk_button_set_label((GtkButton*)game->option[i],temp);
 			gtk_button_set_label((GtkButton*)game->option_[i],temp);
 			gtk_button_set_label((GtkButton*)game->option__[i],temp);
+			printf(" %c",65+easy.correct_ans[x.easy_index[n]]);
+			
 		}
 		
 		fclose(file_p);
 		option_reset();
+
 		return easy.correct_ans[x.easy_index[n]];
 	}
 
@@ -76,21 +88,22 @@ short int get_question(int n)
 		file_error_function();
 		
 		sprintf(temp,"%d. %s",n+6,medium.questions[x.medium_index[n]].string);
-		printf("%s",temp);
-
+		printf("\n %s",temp);
 		gtk_label_set_label((GtkLabel*)game->question_label,temp);
+
 		for(int i=0;i<4;i++)
 		{
 			sprintf(temp,"%c) %s",65+i,medium.options[x.medium_index[n]][i].string);
-			printf("%s",temp);
+			printf("\n%s",temp);
 			gtk_button_set_label((GtkButton*)game->option[i],temp);
 			gtk_button_set_label((GtkButton*)game->option_[i],temp);
-			gtk_button_set_label((GtkButton*)game->option__[i],temp);			
+			gtk_button_set_label((GtkButton*)game->option__[i],temp);
+			printf(" %c",65+medium.correct_ans[x.medium_index[n]]);
 		}
 		
 		fclose(file_p);
 		option_reset();
-		return medium.correct_ans[x.easy_index[n]];
+		return medium.correct_ans[x.medium_index[n]];
 	}
 	else if((n<15)&&(n>=10))//create exception for checkpoint
 	{
@@ -99,23 +112,23 @@ short int get_question(int n)
 		fread(&hard,sizeof(question_paper_30),1,file_p);
 		file_error_function();
 		
-		sprintf(temp,"%d. %s",n+10,hard.questions[x.hard_index[n]].string);
+		sprintf(temp,"%d. %s",n+11,hard.questions[x.hard_index[n]].string);
 		printf("%s",temp);
-
 		gtk_label_set_label((GtkLabel*)game->question_label,temp);
+
 		for(int i=0;i<4;i++)
 		{
 			sprintf(temp,"%c) %s",65+i,hard.options[x.hard_index[n]][i].string);
-			printf("%s",temp);
+			printf("\n%s",temp);
 			gtk_button_set_label((GtkButton*)game->option[i],temp);
 			gtk_button_set_label((GtkButton*)game->option_[i],temp);
 			gtk_button_set_label((GtkButton*)game->option__[i],temp);
-	
+			printf(" %c",65+hard.correct_ans[x.hard_index[n]]);
 		}
 		
 		fclose(file_p);
 		option_reset();
-		return hard.correct_ans[x.easy_index[n]];
+		return hard.correct_ans[x.hard_index[n]];
 		
 	}
 }
@@ -123,7 +136,7 @@ short int get_question(int n)
 void check_answer(GtkToggleButton* button,gpointer user_data)
 {
 	DATA*game = user_data;
-	char dummy[4][9];
+	char dummy[4][9];//to run in loop
 	sprintf(dummy[0],"option_1");
 	sprintf(dummy[1],"option_2");
 	sprintf(dummy[2],"option_3");
@@ -134,41 +147,43 @@ void check_answer(GtkToggleButton* button,gpointer user_data)
 	{
 		if(strcmp(gtk_widget_get_name((GtkWidget*)button),dummy[i])==0)
 		{
-			// delay(5);
-			gtk_widget_hide((GtkWidget*)game->option[i]);
+			// delay(500);
 			gtk_widget_show((GtkWidget*)game->option_[i]);
+			gtk_widget_hide((GtkWidget*)game->option[i]);
+			
 			
 			thread_1 = pthread_create(&thread_1,NULL,(thred_function)sound, (thred_parameter)'L');
-			delay(5000);
 			pthread_join(thread_1,NULL);
+			delay(10000);
 			if(correct_ans==i)
 				{
 				
-					gtk_widget_hide((GtkWidget*)game->q[current_question]);
-  					gtk_widget_show((GtkWidget*)game->q_[current_question]);//tick change
-
-  					sprintf(string,"%s%s",string,level[current_question].money);
+					sprintf(string,"%s%s",string,level[current_question].money);
+  					// gtk_host_label_change_display(int n);
   					change_final_screen_display(string);//silently changing money earned.
-  					current_question++;
-					if(current_question==15)
+  					
+					if(current_question == 14)
 						{
-						
-						thread_1 = pthread_create(&thread_1,NULL,(thred_function)sound, (thred_parameter)'E');
-							// delay(5000);
+							sprintf(string,"%s%s",string,"1,00,00,000");
+							change_final_screen_display(string);
+							thread_1 = pthread_create(&thread_1,NULL,(thred_function)sound, (thred_parameter)'E');
+							delay(2000);
 							result_screen(game->withdraw,user_data);
 							pthread_join(thread_1,NULL);
 						}
 					else
 						{
-							// delay(5000);
-							printf("\n\n%c\n\n",65+correct_ans);
+							current_question++;
 							next_question();
+							gtk_widget_hide((GtkWidget*)game->q[current_question-1]);
+  							gtk_widget_show((GtkWidget*)game->q_[current_question-1]);//tick change
 						}
+
 				}
 			else 
 				{
-					// delay(5);
-					printf("\n\n%c\n\n",65+correct_ans);
+					delay(500);
+					// gtk_host_label_change_display(int n)
 					change_final_screen_display(string);
 					result_screen(game->withdraw,user_data);
 				}
@@ -185,9 +200,7 @@ void check_answer(GtkToggleButton* button,gpointer user_data)
 }
 void next_question()
 {
-	
 	correct_ans = get_question(current_question);
-	
 }
 
 void change_final_screen_display(char* string)
@@ -199,24 +212,21 @@ void change_final_screen_display(char* string)
 		gtk_label_set_label((GtkLabel*)game->end_label,string);
 		pthread_join(thread_1,NULL);
 	}
-	else if((strcmp(string,"THANK YOU FOR JOINING US TODAY\nYOU HAVE WON Rs.")==0)&&(current_question>=4)&&(current_question<9))
+	else if((strcmp(string,"THANK YOU FOR JOINING US TODAY\nYOU HAVE WON Rs.")==0)&&(current_question>4)&&(current_question<9))
 	{
 		thread_1 = pthread_create(&thread_1,NULL,(thred_function)sound, (thred_parameter)'W');		
 		sprintf(string,"%s10,000",string);
 		gtk_label_set_label((GtkLabel*)game->end_label,string);
 		pthread_join(thread_1,NULL);
 	}
-	else if((strcmp(string,"THANK YOU FOR JOINING US TODAY\nYOU HAVE WON Rs.")==0)&&(current_question>=4)&&(current_question<9))
+	else if((strcmp(string,"THANK YOU FOR JOINING US TODAY\nYOU HAVE WON Rs.")==0)&&(current_question>9)&&(current_question<14))
 	{
 		thread_1 = pthread_create(&thread_1,NULL,(thred_function)sound, (thred_parameter)'W');		
 		sprintf(string,"%s3,20,000",string);
 		gtk_label_set_label((GtkLabel*)game->end_label,string);
 		pthread_join(thread_1,NULL);
 	}
-	else if((strcmp(string,"THANK YOU FOR JOINING US TODAY\nYOU HAVE WON Rs.")!=0)&&\
-			(current_question==4)&&\
-			(current_question==9)&&\
-			(current_question!=14))
+	else if((strcmp(string,"THANK YOU FOR JOINING US TODAY\nYOU HAVE WON Rs.")!=0)&&(current_question==4||current_question==9))
 	{
 		thread_1 = pthread_create(&thread_1,NULL,(thred_function)sound, (thred_parameter)'C');		
 		gtk_label_set_label((GtkLabel*)game->end_label,string);
@@ -274,7 +284,6 @@ void unique_random(Index* q)
 				k++;
 			}
 		}
-	
 		if(++loop == 6)
 			{
 				for(int i=0;i<30;i++)
@@ -296,33 +305,31 @@ void file_error_function()//Error if file_pointer doesn't find file.
 }
 //idea of killing bug by printing ^c on terminal
 
-void gtk_label_delay_print(GtkLabel*label,char* string,int milisec)
+
+gboolean gtk_label_delay_print(gpointer string)
 {
-	char copy[400];//use malloc in future
-	int n = strlen(string);//excluding \0
+	char copy[300];
+	static int i = 0;
 	
-	for(int i=0;i<n;i++)
-	{
-		delay(milisec);
-		sprintf(copy,"%s",string);
-     	*(copy+i)='\0';
-     	gtk_label_set_label(label,copy);
-		
-	}
-	
+		sprintf(copy,"%s",(char*)string);
+     	*(copy+i+1)='\0';
+     	i++;
+     	gtk_label_set_label(game->host_label,copy);
+		if(i == strlen((char*)string))
+			{
+				i=0;
+				return FALSE;
+			}
+		else return TRUE;	
 }
-void gtk_button_delay_print(GtkButton*button,char* string,int milisec)
-{
-	char copy[400];//use malloc in future
-	int n = strlen(string);//excluding \0
-	
-	for(int i=0;i<n;i++)
-	{
-		delay(milisec);
-		sprintf(copy,"%s",string);
-     	*(copy+i)='\0';
-     	gtk_button_set_label(button,copy);
+// void display_message(int n)
+// {
+// 	if(n==1)
+// 	{
+// 		g_timeout_add(200,(GSourceFunc)gtk_label_delay_print,string_1);
+// 	}
+// 	else if(n==2)
+// 	{
 		
-	}
-	
-}
+// 	}
+// }

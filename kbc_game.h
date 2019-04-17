@@ -16,6 +16,12 @@
 #define thred_function void * (*)(void *)  
 #define thred_parameter void * restrict   
 
+/* 
+************************************************************************************************************************** 
+Declarations
+************************************************************************************************************************** 
+*/
+
 
 STR//typedef struct
 {
@@ -26,18 +32,18 @@ STR//typedef struct
 
 STR
 {
-    char money[12];
+  char money[12];
 }Level;
 
 STR
 {
-	char string[450];
+	char string[250];
 }Question;
 //Question data type.
 
 STR
 {
-	char string[200];
+	char string[100];
 }Option;
 //Option data type.
 //used below
@@ -73,11 +79,12 @@ STR
   *phone_f,\
   *end_game,\
   *main_screen,\
-  *about_devs;
+  *about_devs,\
+  *dynamic;
 
 
   GtkMenuItem\
-  *withdraw;
+   *withdraw;
 
 
   GtkLabel\
@@ -105,7 +112,8 @@ STR
   *phone_a_friend,\
   *phone_a_friend_,\
   *joker ,\
-  *joker_;
+  *joker_,\
+  *Result;
 
 
   GtkImage\
@@ -120,12 +128,15 @@ STR
 
 }DATA;
 
-//GUI objects declarations 
+
 /* 
 ************************************************************************************************************************** 
-Allocation
+End of gtk objects structs...
 ************************************************************************************************************************** 
 */
+
+//GUI objects declarations 
+
 FILE *file_p;
 Index x;
 // question_paper_30* hard;
@@ -137,19 +148,24 @@ question_paper_45 medium;
 question_paper_30 easy;
 // easy = (question_paper_30*)file_p;
 DATA *game;
+
 Level level[15];
 pthread_t thread_1;//threads
 int current_question;
 short int correct_ans;
-
 /* 
 ************************************************************************************************************************** 
-End of gtk objects structs...
+end of Declarations
 ************************************************************************************************************************** 
 */
 
-//function prototypz with uses...CORE followed by GUI functions...
 
+
+/* 
+************************************************************************************************************************** 
+function prototypz with uses...CORE followed by GUI functions...
+************************************************************************************************************************** 
+*/
 
 //CORE functions-->
 /*
@@ -161,15 +177,12 @@ Delays execution by some number of milliseconds.
 */
 void delay(int number_of_milliseconds); 
 
-/*
-Prints on the widget at the required delay on a button
-*/
-void gtk_button_delay_print(GtkButton*button,char* string,int milisec);
+void display_message(int n);
 
 /*
 Prints on the widget at the required delay on a label
 */
-void gtk_label_delay_print(GtkLabel*label,char* string,int milisec);
+gboolean gtk_label_delay_print(gpointer user_data);
 
 /*
 Unique_Random selection of 5 numbers 
@@ -219,8 +232,6 @@ void sound(char);
 
 /*Error if file_pointer doesn't find file.*/
 void file_error_function();
-
-
 
 
 //GUI functions-->
@@ -303,6 +314,9 @@ void show_audience_vote(GtkButton *button,gpointer user_data);
 void hide_audience_vote(GtkButton *button,gpointer user_data);
 void close_window(GtkWindow *window);
 void hide_window(GtkButton *button);
+void show_result_button();
+void hide_result_button(GtkButton* button,gpointer user_data);
+
 
 
 // end of function prototypes...
