@@ -19,15 +19,15 @@ void sound(char z)
 	// Note that this function can only work in some cases, its not general 
 	//It's Ubuntu specific, as it is direct command on terminal.[Idk if its Linux specific.
 {   
-   
+   /*Use something else here*/
 	switch (z)
 	{
-		case 'E'/*Entry*/        :  system("canberra-gtk-play -f Sounds/Entry.wav");break;
-		case 'Q'/*Question*/     :  system("canberra-gtk-play -f Sounds/KBC_Next_question.wav");break;
-		case 'S'/*Suspence*/     :  system("canberra-gtk-play -f Sounds/Suspence.wav");break;
-		case 'L'/*Lock*/         :  system("canberra-gtk-play -f Sounds/Lock.wav");break;
-		case 'C'/*Checkpoint*/   :  system("canberra-gtk-play -f Sounds/KBC_Win_question.wav");break;
-		case 'W'/*Wrong*/        :  system("canberra-gtk-play -f Sounds/KBC_Wrong_Ans.wav");break;
+		case 'E'/*Entry*/        :  system("canberra-gtk-play -V 0.0 -f Sounds/Entry.wav");break;
+		case 'Q'/*Question*/     :  system("canberra-gtk-play -V 0.0 -f Sounds/KBC_Next_question.wav");break;
+		case 'S'/*Suspence*/     :  system("canberra-gtk-play -V 0.0 -f Sounds/Suspence.wav");break;
+		case 'L'/*Lock*/         :  system("canberra-gtk-play -V 0.0 -f Sounds/Lock.wav");break;
+		case 'C'/*Checkpoint*/   :  system("canberra-gtk-play -V 0.0 -f Sounds/KBC_Win_question.wav");break;
+		case 'W'/*Wrong*/        :  system("canberra-gtk-play -V 0.0 -f Sounds/KBC_Wrong_Ans.wav");break;
 
 	}
 }
